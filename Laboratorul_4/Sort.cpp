@@ -61,15 +61,15 @@ void Sort::InsertSort(bool ascendent) {
 void Sort::QuickSort(int stanga, int dreapta, bool ascendent) {
 	if (stanga < dreapta) {
 		int mijloc = (stanga + dreapta) / 2;
-		this->elem[stanga] ^= this->elem[mijloc];
-		this->elem[mijloc] ^= this->elem[stanga];
-		this->elem[stanga] ^= this->elem[mijloc];
+		int temp = this->elem[stanga];
+		this->elem[stanga] = this->elem[mijloc];
+		this->elem[mijloc] = temp;
 		int i = stanga, j = dreapta, count = 0;
 		while (i < j) {
 			if ((ascendent && this->elem[i] > this->elem[j]) || (!ascendent && this->elem[i] < this->elem[j])) {
-				this->elem[i] ^= this->elem[j];
-				this->elem[j] ^= this->elem[i];
-				this->elem[i] ^= this->elem[j];
+				int temp = this->elem[i];
+				this->elem[i] = this->elem[j];
+				this->elem[j] = temp;
 				count = 1 - count;
 			}
 			i += count;
